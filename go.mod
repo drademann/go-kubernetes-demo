@@ -1,3 +1,3 @@
-module go-kubernetes-demo
+module github.com/drademann/go-kubernetes-demo
 
 go 1.22
