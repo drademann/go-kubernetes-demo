@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: greeter-alpha
+  namespace: demo-space
+  labels:
+    role: greeter-alpha
+spec:
+  containers:
+    - name: greeter-alpha
+      image: localhost:5050/greeter
+      imagePullPolicy: IfNotPresent
+      ports:
+        - name: greeter-alpha
+          containerPort: 8080
+          protocol: TCP
+      command: [ "/greeter" ]
+      args: [ "ALPHA" ]
+  restartPolicy: Always
+  

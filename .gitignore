@@ -8,6 +8,9 @@
 !go.sum
 !go.mod
 
+!/ops/**/*.http
+!/ops/**/*.yaml
+
 !README.md
 !LICENSE
 
