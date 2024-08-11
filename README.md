@@ -28,13 +28,23 @@ Create the namespace `demo-space` as a _folder_ for the resources to come.
 
 ### Pods
 
-Tell Kubernetes to create the first pod.
+Tell Kubernetes to create the pods.
 
     $ kubectl apply -f ops/kubernetes/greeter-alpha-pod.yaml
+    $ kubectl apply -f ops/kubernetes/greeter-bravo-pod.yaml
 
 ### Services
 
 Or tell Kubernetes to create a service.
 
-    $ kubectl apply -f ops/kubernetes/greeter-alpha-service.yaml
-   
+    $ kubectl apply -f ops/kubernetes/greeter-service.yaml
+
+### Ingress
+
+If not already there, install a nginx ingress controller.
+
+    $ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
+
+Then install the Ingress.
+
+    $ kubectl apply -f ops/kubernetes/ingress.yaml
