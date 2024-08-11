@@ -48,3 +48,21 @@ If not already there, install a nginx ingress controller.
 Then install the Ingress.
 
     $ kubectl apply -f ops/kubernetes/ingress.yaml
+
+Add demo.net as test host to `/etc/hosts` reroute traffic to demo.net to localhost instead:
+
+```
+...
+127.0.0.1   demo.net
+...
+```
+
+## Run
+
+Call the pods:
+
+```
+    $ curl demo.net/greet
+```
+
+Either the ALPHA or BRAVO pod should greet you.

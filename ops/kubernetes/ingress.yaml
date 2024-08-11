@@ -1,18 +1,19 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: greet-ingress
+  name: greeter-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
-    - http:
+    - host: demo.net
+      http:
         paths:
-          - path: /greetings
+          - path: /
             pathType: Prefix
             backend:
               service:
-                name: greet-service
+                name: greeter-service
                 port:
                   number: 80
