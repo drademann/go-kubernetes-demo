@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: greeter-bravo-pod
+  namespace: demo-space
+  labels:
+    role: greeter-pod
+spec:
+  containers:
+    - name: greeter-bravo-pod
+      image: localhost:5050/greeter
+      imagePullPolicy: IfNotPresent
+      ports:
+        - name: greet-a-port
+          containerPort: 8080
+          protocol: TCP
+      command: [ "/greeter" ]
+      args: [ "BRAVO" ]
+  restartPolicy: Always
+  

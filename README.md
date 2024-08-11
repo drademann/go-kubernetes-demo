@@ -26,10 +26,15 @@ Create the namespace `demo-space` as a _folder_ for the resources to come.
 
     $ kubectl apply -f ops/kubernetes/namespace.yaml
 
-
-
 ### Pods
 
-Tell kubernetes to create the first pod.
+Tell Kubernetes to create the first pod.
 
-    $ kubectl apply -f ops/kubernetes/pods/greeter-alpha.yaml
+    $ kubectl apply -f ops/kubernetes/greeter-alpha-pod.yaml
+
+### Services
+
+Or tell Kubernetes to create a service.
+
+    $ kubectl apply -f ops/kubernetes/greeter-alpha-service.yaml
+   

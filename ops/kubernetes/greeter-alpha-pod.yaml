@@ -1,17 +1,17 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: greeter-alpha
+  name: greeter-alpha-pod
   namespace: demo-space
   labels:
-    role: greeter-alpha
+    role: greeter-pod
 spec:
   containers:
-    - name: greeter-alpha
+    - name: greeter-alpha-pod
       image: localhost:5050/greeter
       imagePullPolicy: IfNotPresent
       ports:
-        - name: greeter-alpha
+        - name: greet-a-port
           containerPort: 8080
           protocol: TCP
       command: [ "/greeter" ]
