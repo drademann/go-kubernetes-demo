@@ -45,7 +45,7 @@ If not already there, install a nginx ingress controller.
 
     $ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
 
-Then install the Ingress.
+After giving the controller some time to boot, install the Ingress.
 
     $ kubectl apply -f ops/kubernetes/ingress.yaml
 
@@ -66,3 +66,8 @@ Call the pods:
 ```
 
 Either the ALPHA or BRAVO pod should greet you.
+
+## Useful additional tools
+
+- `stern` to see logs of pods combined
+- `k9s` to see pods in a more convenient way
