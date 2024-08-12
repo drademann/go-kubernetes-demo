@@ -12,7 +12,7 @@ Run a local registry accessible at localhost:5050 within Docker Desktop.
 
 Build the Greeter image.
 
-    $ docker build --debug -t greeter .
+    $ docker --debug build -t greeter .
 
     $ docker tag greeter localhost:5050/greeter
 
