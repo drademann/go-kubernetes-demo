@@ -77,23 +77,59 @@ After giving the controller some time to boot, install the Ingress.
 
 Add demo.net as test host to `/etc/hosts` reroute traffic to demo.net to localhost instead:
 
-```
-...
-127.0.0.1   demo.net
-...
-```
-
-## Run
+    ...
+    127.0.0.1   demo.net
+    ...
 
 Call the pods:
 
-```
     $ curl demo.net/greet
-```
 
 Either the ALPHA or BRAVO pod should greet you.
 
-## Useful additional tools
+### Deployments
 
-- `stern` to see logs of pods combined
-- `k9s` to see pods in a more convenient way
+We haven't used a deployment description for our pods yet, but before we do so,
+we delete the currently running pods.
+
+    $ kubectl delete pod -l role=greeter-pod
+
+The pods have the label `role: greeter-pod`.
+This makes it easy to select and delete all at once.
+
+_Tipp_: Use the CLI `stern` to collect the log output of all pods in the namespace with
+
+    $ stern . -n demo-space
+
+It will let you see what is happening within the namespace.
+
+Now we introduce deployment resources to take care of the pods.
+
+    $ kubectl apply -f ops/kubernetes/alpha-deployment.yaml
+
+    $ kubectl apply -f ops/kubernetes/beta-deployment.yaml
+
+Run the commands, and after a short while six pods are running,
+three ALPHA and three BETA pods.
+
+Now try again the request
+
+    $ curl demo.net/greet
+
+It is still working.
+The still running service finds the pods by their role label:
+`greeter-pod`.
+
+    $ kubectl describe service/greeter-service
+
+describes the service, and `Selector` attribute shows how the service selects its pods.
+
+These deployments also created replica sets:
+
+    $ kubectl get replicaSets
+
+They maintain a stable set of pods.
+
+---
+
+Now further going on to use [Helm](https://helm.sh/docs/) instead: [Proceed to HELM.md](ops/helm/HELM.md) 
