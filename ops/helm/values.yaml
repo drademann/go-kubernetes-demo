@@ -1,0 +1,10 @@
+ingress:
+  host: demo.net
+
+greeter:
+  names:
+    - alpha
+    - beta
+  pod:
+    replicas: 3
+    port: 8080

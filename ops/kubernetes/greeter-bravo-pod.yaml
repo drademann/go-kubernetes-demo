@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: greeter-bravo-pod
-  namespace: demo-space
+  namespace: greeter-space
   labels:
     role: greeter-pod
 spec:

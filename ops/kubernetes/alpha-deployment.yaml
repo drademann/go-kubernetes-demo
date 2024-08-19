@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: greeter-alpha-deployment
+  labels:
+    app: greeter-alpha-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: greeter-alpha-deployment
+  template:
+    metadata:
+      name: greeter-alpha-deployment
+      labels:
+        app: greeter-alpha-deployment
+        role: greeter-pod
+    spec:
+      containers:
+        - name: greeter-alpha-deployment
+          image: localhost:5050/greeter
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          command: [ "/greeter" ]
+          args: [ "ALPHA" ]
+      restartPolicy: Always

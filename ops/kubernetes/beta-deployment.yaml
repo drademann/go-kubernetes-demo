@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: greeter-beta-deployment
+  labels:
+    app: greeter-beta-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: greeter-beta-deployment
+  template:
+    metadata:
+      name: greeter-beta-deployment
+      labels:
+        app: greeter-beta-deployment
+        role: greeter-pod
+    spec:
+      containers:
+        - name: greeter-beta-deployment
+          image: localhost:5050/greeter
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          command: [ "/greeter" ]
+          args: [ "BETA" ]
+      restartPolicy: Always

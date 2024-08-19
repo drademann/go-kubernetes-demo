@@ -1,0 +1,32 @@
+{{- range .Values.greeter.names}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{$.Chart.Name}}-{{.}}-deployment
+  namespace: {{$.Chart.Name}}-space
+  labels:
+    app: {{$.Chart.Name}}-{{.}}-deployment
+spec:
+  replicas: {{$.Values.greeter.pod.replicas}}
+  selector:
+    matchLabels:
+      app: {{$.Chart.Name}}-{{.}}-deployment
+  template:
+    metadata:
+      name: {{$.Chart.Name}}-{{.}}-deployment
+      labels:
+        app: {{$.Chart.Name}}-{{.}}-deployment
+        role: {{$.Chart.Name}}-pod
+    spec:
+      containers:
+        - name: greeter-alpha-deployment
+          image: localhost:5050/greeter
+          imagePullPolicy: Always
+          ports:
+            - containerPort: {{$.Values.greeter.pod.port}}
+              protocol: TCP
+          command: [ "/greeter" ]
+          args: [ {{. | upper | quote }} ]
+      restartPolicy: Always
+---
+{{- end}}

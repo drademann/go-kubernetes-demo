@@ -10,11 +10,14 @@
 
 !/ops/**/*.http
 !/ops/**/*.yaml
+!/ops/**/*.tpl
 
-!README.md
+!*.md
 !LICENSE
 
 # ...even if they are in subdirectories
 !*/
 
 !/Dockerfile
+
+

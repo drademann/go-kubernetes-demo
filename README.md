@@ -1,4 +1,4 @@
-# Go Kubernetes Demo
+# 1. The Kubernetes Demo
 
 ## The Greeter
 
@@ -48,9 +48,13 @@ we first deploy the Kubernetes resources by hand with `kubectl`.
 
 ### Namespace
 
-Create the namespace `demo-space` as a _folder_ for the resources to come.
+Create the namespace `greeter-space` as a _folder_ for the resources to come.
 
     $ kubectl apply -f ops/kubernetes/namespace.yaml
+
+You can change to the newly created namespace by setting you current Kubernetes context:
+
+    $ kubectl config set-context --current --namespace=greeter-space
 
 ### Pods
 
@@ -99,7 +103,7 @@ This makes it easy to select and delete all at once.
 
 _Tipp_: Use the CLI `stern` to collect the log output of all pods in the namespace with
 
-    $ stern . -n demo-space
+    $ stern . -n greeter-space
 
 It will let you see what is happening within the namespace.
 
